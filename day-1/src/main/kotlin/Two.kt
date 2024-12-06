@@ -6,14 +6,11 @@ fun main() {
     val resources = ResourceLoader()
     val res =
         resources.list1
-            .associateBy({
-                it
-            }, { value ->
-                resources.list2.filter { it == value }.size
-            })
-            .map { (key, value) ->
-                key * value
-            }.sum()
+            .map { value ->
+                Pair(value, resources.list2.filter { it == value }.size)
+            }.sumOf { (first, second) ->
+                first * second
+            }
 
     println("Result: $res")
 }
