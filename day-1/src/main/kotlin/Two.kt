@@ -1,5 +1,7 @@
 package ch.mvoirol
 
+import ch.mvoirol.common.ResourceLoader
+
 fun main() {
     val resources = ResourceLoader()
     val res =

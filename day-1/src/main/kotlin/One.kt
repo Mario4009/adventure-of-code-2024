@@ -1,5 +1,6 @@
 package ch.mvoirol
 
+import ch.mvoirol.common.ResourceLoader
 import kotlin.math.abs
 
 fun main() {

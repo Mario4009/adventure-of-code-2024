@@ -1,4 +1,4 @@
-package ch.mvoirol
+package ch.mvoirol.common
 
 import java.io.File
 
