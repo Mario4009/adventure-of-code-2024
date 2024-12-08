@@ -5,7 +5,20 @@ import kotlin.math.abs
 data class Report(
     val numbers: List<Int>,
 ) {
-    fun isValid(): Boolean {
+    fun isValid() = isValid(numbers)
+
+    fun isValidByRemovingOneEntry(): Boolean {
+        numbers.forEachIndexed { index, _ ->
+            val listWithRemovedIndex = numbers.filterIndexed { i, _ -> i != index }
+            if (isValid(listWithRemovedIndex)) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    private fun isValid(numbers: List<Int>): Boolean {
         var tempValue: Int? = null
 
         // gap check

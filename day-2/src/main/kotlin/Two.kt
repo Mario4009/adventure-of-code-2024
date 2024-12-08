@@ -9,10 +9,10 @@ fun main() {
     val safeReports = mutableListOf<Report>()
 
     resources.reports.forEach { report ->
-        if (report.isValid()) {
+        if (report.isValid() || report.isValidByRemovingOneEntry()) {
             safeReports.add(report)
         }
     }
 
-    println("${safeReports.size} reports are safe!") // 246
+    println("${safeReports.size} reports are safe!") // 318
 }
