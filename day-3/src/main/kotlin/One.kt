@@ -7,5 +7,5 @@ fun main() {
 
     val sum = resources.getMultiplications().sumOf { it.first * it.second }
 
-    println("Result: $sum")
+    println("Result: $sum") // 181345830
 }

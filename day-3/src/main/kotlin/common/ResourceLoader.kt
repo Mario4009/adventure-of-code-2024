@@ -9,10 +9,32 @@ class ResourceLoader {
 
     private val rawInput = File(filePath).readText()
 
-    fun getMultiplications(): MutableList<Pair<Int, Int>> {
+    fun getMultiplications(filterDoAndDoNot: Boolean = false): MutableList<Pair<Int, Int>> {
         val multiplications = mutableListOf<Pair<Int, Int>>()
         val ca = rawInput.toCharArray()
+        var inStateDo = true
         ca.forEachIndexed { i, character ->
+            if (filterDoAndDoNot) {
+                if (character == 'd' && ca[i + 1] == 'o' && ca[i + 2] == '(' && ca[i + 3] == ')') {
+                    inStateDo = true
+                }
+
+                if (character == 'd' &&
+                    ca[i + 1] == 'o' &&
+                    ca[i + 2] == 'n' &&
+                    ca[i + 3] == '\'' &&
+                    ca[i + 4] == 't' &&
+                    ca[i + 5] == '(' &&
+                    ca[i + 6] == ')'
+                ) {
+                    inStateDo = false
+                }
+
+                if (!inStateDo) {
+                    return@forEachIndexed
+                }
+            }
+
             if (character == 'm' && ca[i + 1] == 'u' && ca[i + 2] == 'l' && ca[i + 3] == '(') {
                 val pattern = "\\(\\d{1,3},\\d{1,3}\\)(?s).*"
                 val toCheck =
